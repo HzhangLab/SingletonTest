@@ -5,21 +5,23 @@ import org.springframework.web.client.RestTemplate;
 public class SingletonTest {
 
     public static void main(String[] args) {
-//        RestTemplate restTemplate1 = EnumSingleton.SINGLETON.getInstance();
-//        System.out.println(restTemplate1.toString());
-//        RestTemplate restTemplate2 = EnumSingleton.SINGLETON.getInstance();
-//        System.out.println(restTemplate2.toString());
-
+        /**
+         * 枚举 单例模式
+         */
 //        for (int i=0; i< 100; i++){
 //            new Thread(){
 //                @Override
 //                public void run() {
-//                    RestTemplate restTemplate1 = EnumSingleton.SINGLETON.getInstance();
-//                    System.out.println(restTemplate1.toString());
+//                    RestTemplate restTemplate = EnumSingleton.SINGLETON.getInstance();
+//                    System.out.println(restTemplate.toString());
 //                }
-//            };
+//            }.start();
 //        }
-//
+
+
+        /**
+         *  懒汉式-线程不安全 单例模式
+         */
 //        for (int i=0; i< 100; i++){
 //            new Thread(){
 //                @Override
@@ -30,10 +32,11 @@ public class SingletonTest {
 //            }.start();
 //        }
 
-//        /**
-//         * 优点：线程安全
-//         * 缺点：加锁粒度大，对整个方法加锁
-//         */
+        /**
+         *懒汉式-线程安全 单例模式
+         * 优点：线程安全
+         * 缺点：加锁粒度大，对整个方法加锁
+         */
 //        for (int i=0; i< 100; i++){
 //            new Thread(){
 //                @Override
@@ -45,19 +48,23 @@ public class SingletonTest {
 //        }
 
         /**
+         *double check locking 单例模式
          *
          */
-        for (int i=0; i< 100; i++){
-            new Thread(){
-                @Override
-                public void run() {
-                    SingletonDoubleCheckLocking singletonDoubleCheckLocking = SingletonDoubleCheckLocking.getInstance();
-                    System.out.println(singletonDoubleCheckLocking.toString());
-                }
-            }.start();
-        }
+//        for (int i=0; i< 100; i++){
+//            new Thread(){
+//                @Override
+//                public void run() {
+//                    SingletonDoubleCheckLocking singletonDoubleCheckLocking = SingletonDoubleCheckLocking.getInstance();
+//                    System.out.println(singletonDoubleCheckLocking.toString());
+//                }
+//            }.start();
+//        }
 
 
+        /**
+         * 饿汉式 单例模式
+         */
 //        for (int i=0; i< 100; i++){
 //            new Thread(){
 //                @Override
@@ -67,6 +74,19 @@ public class SingletonTest {
 //                }
 //            }.start();
 //        }
+
+        /**
+         * 静态内部类 单例模式
+         */
+        for (int i=0; i< 100; i++){
+            new Thread(){
+                @Override
+                public void run() {
+                    SingletonStaticClass singletonStaticClass =  SingletonStaticClass.getInstance();
+                    System.out.println(singletonStaticClass.toString());
+                }
+            }.start();
+        }
 
     }
 

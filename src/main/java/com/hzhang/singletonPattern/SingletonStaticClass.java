@@ -5,14 +5,11 @@ public class SingletonStaticClass {
     private SingletonStaticClass(){};
 
     private static class InstantSingleton{
-
-        static SingletonStaticClass instance(){
-            return new SingletonStaticClass();
-        }
+        private static SingletonStaticClass singletonStaticClass = new SingletonStaticClass();
     }
 
     public static SingletonStaticClass getInstance(){
-        return InstantSingleton.instance();
+        return InstantSingleton.singletonStaticClass;
     }
 
 }

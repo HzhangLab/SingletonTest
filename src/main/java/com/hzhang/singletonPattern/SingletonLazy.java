@@ -15,7 +15,7 @@ public class SingletonLazy {
     public static SingletonLazy getInstance(){
         if (singletonLazy == null){
             try {
-                Thread.sleep(300);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

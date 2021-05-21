@@ -2,13 +2,13 @@ package com.hzhang.singletonPattern;
 
 public class SingletonDoubleCheckLocking {
 
-    private static SingletonDoubleCheckLocking singletonDoubleCheckLocking;
+    private static volatile SingletonDoubleCheckLocking singletonDoubleCheckLocking;
 
     private SingletonDoubleCheckLocking(){};
 
     public static SingletonDoubleCheckLocking getInstance(){
        if (singletonDoubleCheckLocking == null){
-           synchronized ("10"){
+           synchronized (SingletonDoubleCheckLocking.class){
                if (singletonDoubleCheckLocking == null){
                    singletonDoubleCheckLocking = new SingletonDoubleCheckLocking();
                }
